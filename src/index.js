@@ -60,15 +60,18 @@ function selectBreed(event) {
 	let breedLetter = event.target.value;
 	let breeds = document.getElementsByTagName('li');
 	if (breedLetter === 'none') {
-		return;
-	}
-	for (let i = breeds.length - 1; i >= 0; i--) {
-		let breed = breeds[i];
-		let identifier = breed.id;
-		if (identifier != breedLetter) {
-			breed.style.display = 'none';
-		} else {
+		for (breed of breeds) {
 			breed.style.display = '';
+		}
+	} else {
+		for (let i = breeds.length - 1; i >= 0; i--) {
+			let breed = breeds[i];
+			let identifier = breed.id;
+			if (identifier != breedLetter) {
+				breed.style.display = 'none';
+			} else {
+				breed.style.display = '';
+			}
 		}
 	}
 }
