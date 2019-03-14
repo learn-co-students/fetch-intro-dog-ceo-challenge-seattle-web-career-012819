@@ -34,11 +34,24 @@ function loadDogBreeds() {
   })
   .then((json) => {
     const dogBreeds = Object.keys(json.message);
-    renderDogBreeds(dogBreeds);
+
+    //Breed Dropdown
+    const breedLetterDropdown = document.getElementById("breed-dropdown");
+    breedLetterDropdown.addEventListener('change', () => {
+      const filteredBreeds = [];
+      let selectedLetter = breedLetterDropdown.value;
+      for (let breed of dogBreeds) {
+        if (breed[0].toLowerCase() === selectedLetter) {
+          filteredBreeds.push(breed);
+        }
+      }
+      renderDogBreeds(filteredBreeds);
+    });
   });
 }
 
 function renderDogBreeds(breeds) {
+  document.getElementById("dog-breeds").innerHTML = '';
   for (let breed of breeds) {
     const ul = document.getElementById('dog-breeds');
     const li = document.createElement('li');
@@ -50,3 +63,4 @@ function renderDogBreeds(breeds) {
     });
   }
 }
+
