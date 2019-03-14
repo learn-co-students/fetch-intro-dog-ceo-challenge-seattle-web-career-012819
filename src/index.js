@@ -44,5 +44,9 @@ function renderDogBreeds(breeds) {
     const li = document.createElement('li');
     li.textContent = breed;
     ul.appendChild(li);
+
+    li.addEventListener('click', () => {
+      li.style.color = 'purple';
+    });
   }
 }
